@@ -63,16 +63,25 @@ func sendsExactly(body []byte, p any, defaults map[string]any) bool {
 	if err != nil {
 		return false
 	}
-	if obj, ok := want.(map[string]any); ok {
-		for k, v := range defaults {
-			if _, set := obj[k]; !set {
-				obj[k] = v
-			}
-		}
-	}
 	again, _ := json.Marshal(p)
 	got, _ := kit.Decode(again)
+	applyDefaults(want, defaults, nil)
+	applyDefaults(got, defaults, "")
 	return reflect.DeepEqual(want, got)
+}
+
+// applyDefaults sets each default member that is absent, or equal to
+// unset (the zero value a method replaces before sending).
+func applyDefaults(v any, defaults map[string]any, unset any) {
+	obj, ok := v.(map[string]any)
+	if !ok {
+		return
+	}
+	for k, d := range defaults {
+		if cur, set := obj[k]; !set || cur == unset {
+			obj[k] = d
+		}
+	}
 }
 
 type client = cs.Client

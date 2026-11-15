@@ -112,7 +112,8 @@ jobs:
         with:
           repository: sebastienrousseau/crypto-service
           ref: ${{ steps.pin.outputs.ref }}
-          path: server
+          # Dot-prefixed, so `go list ./...` and every ./... tool skip it.
+          path: .server
           persist-credentials: false
       - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
         with:
@@ -121,7 +122,7 @@ jobs:
         with:
           node-version: "24"
       - name: Build the server
-        working-directory: server
+        working-directory: .server
         run: |
           pnpm install --frozen-lockfile
           pnpm -r run build
@@ -131,5 +132,5 @@ jobs:
           cache: false
       - name: Regression against the pinned server
         env:
-          CRYPTO_SERVICE_SERVER_DIR: ${{ github.workspace }}/server
+          CRYPTO_SERVICE_SERVER_DIR: ${{ github.workspace }}/.server
         run: make regression

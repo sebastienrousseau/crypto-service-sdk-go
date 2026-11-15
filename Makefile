@@ -21,11 +21,18 @@ check: versions fmt-check vet staticcheck complexity vulncheck build test
 versions:
 	scripts/verify-release-versions
 
+# The module's own Go files (sources and tests of every package), as
+# `go list` sees them. Formatting and complexity run on these, never on a
+# directory: gofmt, gocyclo and gocognit recurse into directories, and CI
+# checks the pinned server out under .server/, whose node_modules carry
+# unrelated Go sources.
+PKGFILES = $(shell go list -f '{{$$d := .Dir}}{{range .GoFiles}}{{$$d}}/{{.}} {{end}}{{range .TestGoFiles}}{{$$d}}/{{.}} {{end}}{{range .XTestGoFiles}}{{$$d}}/{{.}} {{end}}' ./...)
+
 fmt-check:
-	@out="$$(gofmt -l .)"; if [ -n "$$out" ]; then echo "gofmt needed:"; echo "$$out"; exit 1; fi
+	@out="$$(gofmt -l $(PKGFILES))"; if [ -n "$$out" ]; then echo "gofmt needed:"; echo "$$out"; exit 1; fi
 
 fmt:
-	gofmt -w .
+	gofmt -w $(PKGFILES)
 
 vet:
 	go vet ./...
@@ -45,8 +52,8 @@ vulncheck:
 # 60 lines per function and 500 per file, halstead_test.go a Halstead
 # difficulty of 30.
 complexity:
-	go run $(GOCYCLO) -over 10 .
-	go run $(GOCOGNIT) -over 15 .
+	go run $(GOCYCLO) -over 10 $(PKGFILES)
+	go run $(GOCOGNIT) -over 15 $(PKGFILES)
 
 build:
 	go build ./...

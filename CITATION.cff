@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+cff-version: 1.2.0
+message: "If you use crypto-service-sdk-go in research or production write-ups, please cite it as below."
+type: software
+title: "crypto-service-sdk-go: a typed Go client for the Crypto Service REST API"
+abstract: >-
+  A Go client for the Crypto Service REST API (crypto-server), which
+  provides hashing, authenticated encryption, server-held signing keys,
+  post-quantum key encapsulation and signatures, HPKE and KMS
+  operations. The client implements no cryptography itself and is held
+  to the conformance kit shared by every Crypto Service client.
+authors:
+  - family-names: Rousseau
+    given-names: Sebastien
+version: "0.0.40"
+# Dual-licensed, at the user's option (LICENSE, LICENSE-APACHE,
+# LICENSE-MIT). CFF 1.2.0 takes SPDX licence identifiers, not an SPDX
+# expression; a list of several means the work is available under any of
+# them.
+license:
+  - Apache-2.0
+  - MIT
+repository-code: "https://github.com/sebastienrousseau/crypto-service-sdk-go"
+url: "https://crypto-service.co"
+keywords:
+  - cryptography
+  - post-quantum
+  - ML-KEM
+  - ML-DSA
+  - HPKE
+  - Go

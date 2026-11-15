@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+# Go modules (the module itself has no requirements; the entry keeps
+# Dependabot watching should one appear), the CI actions, the hash-pinned
+# Python tool locks in ci/, and the devcontainer image. The crypto-server
+# pin in ci/server.ref moves with the suite release, by hand.
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    reviewers:
+      - "sebastienrousseau"
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "sebastienrousseau"
+    labels:
+      - "ci/cd"
+      - "automated"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pip"
+    directory: "/ci"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "build(deps):"
+    groups:
+      python-tools:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "automated"

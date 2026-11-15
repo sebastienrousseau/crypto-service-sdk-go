@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+//
+// A container that boots to a working `make check`: Go 1.27 (the image,
+// pinned by digest) and Node.js 24 with pnpm 11.9.0, to build the pinned
+// crypto-server that `make regression` runs and to run markdownlint.
+{
+  "name": "crypto-service-sdk-go",
+  "image": "mcr.microsoft.com/devcontainers/go:2-1.27-trixie@sha256:c83c320b68e27dc36903cd5ee07394870c5330dfd77b0897e78c7e1aa00ddfd0",
+  "features": {
+    "ghcr.io/devcontainers/features/node:2": { "version": "24", "pnpmVersion": "11.9.0" }
+  },
+  "postCreateCommand": "make check",
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.go"]
+    }
+  }
+}

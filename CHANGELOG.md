@@ -7,10 +7,10 @@ format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and versions advance in `0.0.1` steps in lockstep with the Crypto
 Service suite.
 
-## [0.0.40] - Unreleased
+## [0.0.40] - 2026-11-16
 
-The first release will be 0.0.40, in lockstep with the Crypto Service
-suite. CI tests against crypto-service at commit
+The first release, in lockstep with the Crypto Service suite 0.0.40.
+CI tests against crypto-service at commit
 `3e8ecfd757e3577011953d8b47677f4c003426fb` (`ci/server.ref`).
 
 ### Added

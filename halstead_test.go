@@ -63,7 +63,7 @@ func measure(src []byte) halstead {
 func TestHalsteadDifficulty(t *testing.T) {
 	err := filepath.WalkDir(".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d.IsDir() || !strings.HasSuffix(path, ".go") {
-			return err
+			return skipWalk(path, d, err)
 		}
 		return checkHalstead(t, path)
 	})

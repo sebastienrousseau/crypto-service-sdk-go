@@ -19,13 +19,31 @@ const (
 	maxFileLines = 500
 )
 
+// skipWalk is what a WalkDir callback returns for a directory or a
+// failed entry: SkipDir for the directories the go tool ignores (a
+// leading "." or "_", testdata) and node_modules, so a checkout such as
+// CI's .server/ is never measured; err otherwise.
+func skipWalk(path string, d fs.DirEntry, err error) error {
+	if err != nil || path == "." {
+		return err
+	}
+	name := d.Name()
+	if !d.IsDir() {
+		return nil
+	}
+	if strings.HasPrefix(name, ".") || strings.HasPrefix(name, "_") || name == "testdata" || name == "node_modules" {
+		return filepath.SkipDir
+	}
+	return nil
+}
+
 // TestFunctionAndFileSizes keeps every Go function, tests included,
 // within 60 lines and every Go file within 500.
 func TestFunctionAndFileSizes(t *testing.T) {
 	fset := token.NewFileSet()
 	err := filepath.WalkDir(".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d.IsDir() || !strings.HasSuffix(path, ".go") {
-			return err
+			return skipWalk(path, d, err)
 		}
 		file, err := parser.ParseFile(fset, path, nil, 0)
 		if err != nil {

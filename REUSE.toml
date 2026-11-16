@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+#
+# REUSE (https://reuse.software) metadata for files that cannot carry a
+# header, and the copyright line for every file. `reuse lint` runs in the
+# docs-lint workflow. Source files keep their own SPDX-License-Identifier
+# header; LICENSES/ holds the licence texts REUSE resolves them against.
+
+version = 1
+SPDX-PackageName = "crypto-service-sdk-go"
+SPDX-PackageSupplier = "Sebastien Rousseau"
+SPDX-PackageDownloadLocation = "https://github.com/sebastienrousseau/crypto-service-sdk-go"
+
+# Every file: the project's copyright and dual licence. "aggregate" adds
+# them to what a file's own header says.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Sebastien Rousseau"
+SPDX-License-Identifier = "Apache-2.0 OR MIT"
+
+# The Developer Certificate of Origin is the Linux Foundation's text,
+# distributed verbatim.
+[[annotations]]
+path = "DCO.txt"
+precedence = "override"
+SPDX-FileCopyrightText = "2004, 2006 The Linux Foundation and its contributors"
+SPDX-License-Identifier = "LicenseRef-DCO-1.1"

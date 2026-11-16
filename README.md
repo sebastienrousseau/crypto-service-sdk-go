@@ -65,12 +65,6 @@
 go get github.com/sebastienrousseau/crypto-service-sdk-go@v0.0.40
 ```
 
-> **Not yet published.** The module has no tagged release yet; the first
-> will be 0.0.40, in lockstep with the Crypto Service suite. Until then
-> the command above does not resolve from the module proxy; use the
-> repository with a `replace` directive or
-> `go get github.com/sebastienrousseau/crypto-service-sdk-go@main`.
-
 The module uses the Go standard library only: `go get` adds one line to
 your `go.mod` and nothing to your `go.sum` beyond this module. It needs a
 running crypto-server to talk to; from a checkout of

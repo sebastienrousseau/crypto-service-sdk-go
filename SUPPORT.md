@@ -14,7 +14,7 @@ While pre-`1.0`, only the latest `0.0.x` receives fixes.
 
 | Version | Status | Receives fixes? |
 | :--- | :--- | :--- |
-| 0.0.40 (unreleased, the first release) | In development | Yes, before release |
+| 0.0.40 (the first release) | Current | Yes |
 
 The client is tested against the crypto-server commit pinned in
 `ci/server.ref`.

@@ -95,5 +95,5 @@ environment.
 
 Run the workflow by hand (`workflow_dispatch`, `dry_run` on) to see the
 release it would make without publishing anything. The tag-verification
-step reads the maintainer's allowed signers from `KEYS.asc`, which the
-maintainer adds before the first release.
+step checks the tag against the maintainer's allowed signers in
+`KEYS.asc`.

@@ -391,6 +391,11 @@ Scorecard run in CI, actions are pinned by commit SHA, and every file is
 REUSE-compliant.
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
+Release tags are signed and release assets carry provenance
+attestations; [`SECURITY.md`, "Verifying a release"](SECURITY.md#verifying-a-release)
+gives the steps, and [`docs/REPRODUCING.md`](docs/REPRODUCING.md) the
+rebuild. The [assurance case](docs/ASSURANCE.md) argues each security
+property from the code and tests.
 
 ---
 
@@ -401,6 +406,8 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 [Family map](#the-crypto-service-ecosystem)
 
 Also: [Architecture](docs/ARCHITECTURE.md) ·
+[Assurance case](docs/ASSURANCE.md) ·
+[Reproducing a release](docs/REPRODUCING.md) ·
 [Decisions](docs/adr/README.md) · [Policies](docs/POLICIES.md) ·
 [Roadmap](docs/ROADMAP.md) · [Conformance kit](conformance/README.md) ·
 [Changelog](CHANGELOG.md) · [Support](SUPPORT.md) ·

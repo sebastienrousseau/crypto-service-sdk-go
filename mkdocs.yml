@@ -76,6 +76,8 @@ nav:
       - Roadmap: ROADMAP.md
       - Changelog: project/changelog.md
       - Security: project/security.md
+      - Assurance case: ASSURANCE.md
+      - "Security review 2026-11": security-review-2026-11.md
       - Reproducing a release: REPRODUCING.md
       - Support: project/support.md
       - Governance: project/governance.md

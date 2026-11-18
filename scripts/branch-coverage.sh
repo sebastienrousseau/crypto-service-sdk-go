@@ -8,7 +8,10 @@
 # taken both ways by the unit tests. Fails below 100% of branches, the
 # same floor scripts/coverage.sh holds for statements. The measured
 # packages are the ones coverage.sh measures: the module root and
-# internal/kit. The live tests skip here, as in `make test`.
+# internal/kit. The live tests are made to skip (CRYPTO_SERVICE_URL is
+# emptied), so the figure is the unit tests' alone and a regression run
+# does not send the conformance kit a third time: the server's password
+# routes allow 5 calls a minute per address.
 #
 #   scripts/branch-coverage.sh
 #
@@ -23,7 +26,7 @@ GOBCO="github.com/rillig/gobco@v1.3.4"
 
 failures=0
 for pkg in . ./internal/kit; do
-  out="$(go run "$GOBCO" -branch "$pkg" 2>&1)" || {
+  out="$(CRYPTO_SERVICE_URL='' CRYPTO_SERVICE_REQUIRE_LIVE='' go run "$GOBCO" -branch "$pkg" 2>&1)" || {
     echo "$out" >&2
     echo "branch-coverage: gobco failed on $pkg" >&2
     exit 1

@@ -171,7 +171,9 @@ func checkBaseURL(baseURL string) error {
 		return errors.New("crypto-service: base URL must be absolute http or https")
 	case u.User != nil:
 		return errors.New("crypto-service: base URL must not carry credentials; use WithAPIKey or WithToken")
-	case u.RawQuery != "" || u.Fragment != "":
+	case strings.ContainsAny(baseURL, "?#"):
+		// Not u.RawQuery or u.Fragment: an empty "?" or "#" parses as
+		// none, and every path appended to the URL would land in it.
 		return errors.New("crypto-service: base URL must not have a query or fragment")
 	}
 	return nil
@@ -184,10 +186,19 @@ func (c *Client) check() error {
 			return errors.New("crypto-service: a credential or traceparent contains a control character")
 		}
 	}
-	if t, ok := c.httpClient.Transport.(*http.Transport); ok && t.TLSClientConfig != nil && t.TLSClientConfig.InsecureSkipVerify {
+	if t, ok := c.roundTripper().(*http.Transport); ok && t.TLSClientConfig != nil && t.TLSClientConfig.InsecureSkipVerify {
 		return errors.New("crypto-service: TLS certificate verification must stay on")
 	}
 	return nil
+}
+
+// roundTripper is the transport requests go through: an injected
+// client without one sends through http.DefaultTransport.
+func (c *Client) roundTripper() http.RoundTripper {
+	if c.httpClient.Transport == nil {
+		return http.DefaultTransport
+	}
+	return c.httpClient.Transport
 }
 
 func isControl(r rune) bool { return r < 0x20 || r == 0x7f }

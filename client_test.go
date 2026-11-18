@@ -17,6 +17,9 @@ func TestNewClientRefusesBadBaseURLs(t *testing.T) {
 	for _, u := range []string{
 		"://bad", "ftp://h", "http://", "/relative",
 		"http://user:pass@h", "http://h/?q=1", "http://h/#f",
+		// An empty query or fragment parses as none, but the path
+		// appended to the base URL would land in it.
+		"http://h/p?", "http://h#", "http://h/p#",
 	} {
 		c, err := NewClient(u)
 		if err == nil || c != nil {
@@ -42,6 +45,21 @@ func TestNewClientRefusesControlCharactersAndInsecureTLS(t *testing.T) {
 		t.Error("accepted a transport that skips TLS verification")
 	}
 	if _, err := NewClient("https://h", WithTransport(&http.Transport{TLSClientConfig: &tls.Config{}})); err != nil {
+		t.Error(err)
+	}
+}
+
+// An injected *http.Client with no Transport sends through
+// http.DefaultTransport, so that is the transport check() must see.
+func TestNewClientRefusesAnInsecureDefaultTransport(t *testing.T) {
+	saved := http.DefaultTransport
+	t.Cleanup(func() { http.DefaultTransport = saved })
+	http.DefaultTransport = &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
+	if _, err := NewClient("https://h", WithHTTPClient(&http.Client{})); err == nil {
+		t.Error("accepted a client whose default transport skips TLS verification")
+	}
+	http.DefaultTransport = &http.Transport{}
+	if _, err := NewClient("https://h", WithHTTPClient(&http.Client{})); err != nil {
 		t.Error(err)
 	}
 }

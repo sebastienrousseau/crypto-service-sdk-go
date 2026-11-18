@@ -72,6 +72,13 @@ diff /tmp/SHA256SUMS dist/SHA256SUMS && echo reproduced
 Use a fresh clone at the tag, not a work tree with other changes: the
 SBOM's module version is read from git.
 
+The procedure was checked across machines before v0.0.41 was tagged:
+for commit `e3c4d71` of `feat/v0.0.41`, the release workflow's dry run
+on GitHub's `ubuntu-latest` runner
+([run 44263946227](https://github.com/sebastienrousseau/crypto-service-sdk-go/actions/runs/44263946227))
+and a local build on Arch Linux (git 2.56.1, gzip 1.15, Go 1.27.4)
+produced the same `SHA256SUMS`.
+
 ### v0.0.40
 
 v0.0.40 was released before this procedure existed: its archive was

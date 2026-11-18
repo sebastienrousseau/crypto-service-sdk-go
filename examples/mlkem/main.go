@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command mlkem creates a server-held ML-KEM-768 key, encapsulates a
 // shared secret to its public key, and decapsulates it by keyId; both

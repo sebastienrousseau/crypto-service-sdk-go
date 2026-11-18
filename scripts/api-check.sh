@@ -1,5 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # API-breakage check: gorelease compares the exported API of HEAD with
 # the last release tag before this version and fails on an incompatible

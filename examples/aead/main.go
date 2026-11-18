@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command aead encrypts a message with XChaCha20-Poly1305 under a
 // 256-bit key and decrypts it again. The key here is a fixed synthetic

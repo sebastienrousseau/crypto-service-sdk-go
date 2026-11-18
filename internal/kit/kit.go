@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Package kit reads the conformance kit vendored in conformance/ and
 // checks answers against it: substitution of captured values, JSON

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command hash digests "abc" with SHA-256 on the server and checks the
 // FIPS 180-2 test vector.

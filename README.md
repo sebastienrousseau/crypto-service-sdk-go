@@ -1,4 +1,5 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
+<!-- SPDX-FileCopyrightText: 2026 Sebastien Rousseau -->
 
 <p align="center">
   <img src="https://cloudcdn.pro/crypto-service/v1/logos/crypto-service.svg" alt="Crypto Service logo" width="128" />
@@ -362,9 +363,10 @@ make versions fmt-check vet build
 
 `make check` runs the version check, `gofmt -l`, `go vet`, staticcheck,
 the gocyclo (cyclomatic 10) and gocognit (cognitive 15) ceilings,
-govulncheck, `go build` and `go test -race`, which fails below 100.0%
+govulncheck, `go build`, `go test -race`, which fails below 100.0%
 statement coverage and holds every function to 60 lines, every file to
-500 and a Halstead difficulty of 30. `make conformance` runs the
+500 and a Halstead difficulty of 30, and gobco, which fails below 100%
+branch coverage. `make conformance` runs the
 conformance kit, the live tests, every example and every code block of
 this README against a running server; `make regression` starts the
 pinned server and runs both. `make fuzz` runs the two fuzz targets and
@@ -390,6 +392,11 @@ Scorecard run in CI, actions are pinned by commit SHA, and every file is
 REUSE-compliant.
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
+Release tags are signed and release assets carry provenance
+attestations; [`SECURITY.md`, "Verifying a release"](SECURITY.md#verifying-a-release)
+gives the steps, and [`docs/REPRODUCING.md`](docs/REPRODUCING.md) the
+rebuild. The [assurance case](docs/ASSURANCE.md) argues each security
+property from the code and tests.
 
 ---
 
@@ -400,6 +407,8 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 [Family map](#the-crypto-service-ecosystem)
 
 Also: [Architecture](docs/ARCHITECTURE.md) ·
+[Assurance case](docs/ASSURANCE.md) ·
+[Reproducing a release](docs/REPRODUCING.md) ·
 [Decisions](docs/adr/README.md) · [Policies](docs/POLICIES.md) ·
 [Roadmap](docs/ROADMAP.md) · [Conformance kit](conformance/README.md) ·
 [Changelog](CHANGELOG.md) · [Support](SUPPORT.md) ·

@@ -1,5 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # Fails unless every HTML page of the built manual carries the author
 # link on the copyright line (workspace standard, AGENTS.md 7.1.2):

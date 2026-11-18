@@ -1,13 +1,14 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # Runs the library's tests with the race detector and fails unless they
 # cover 100.0% of statements. The measured packages are the module root
 # (the client) and internal/kit (the conformance kit reader). examples/
 # are programs, not library code: CI builds each one and runs it against
 # a live crypto-server instead (see DEVELOPMENT.md). Go measures
-# statements only; there is no branch-coverage tool for Go, so the
-# branch half of the floor is held by review and the per-branch tests.
+# statements only; scripts/branch-coverage.sh holds the branch floor
+# with gobco.
 #
 #   scripts/coverage.sh                    # writes coverage.out
 #   COVERPROFILE=/tmp/c.out scripts/coverage.sh

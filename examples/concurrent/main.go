@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command concurrent fans four hash requests out over goroutines that
 // share one client, with the standard library only. The client is safe

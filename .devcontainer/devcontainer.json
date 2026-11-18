@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 //
 // A container that boots to a working `make check`: Go 1.27 (the image,
 // pinned by digest) and Node.js 24 with pnpm 11.9.0, to build the pinned

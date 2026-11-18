@@ -1,4 +1,5 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
+<!-- SPDX-FileCopyrightText: 2026 Sebastien Rousseau -->
 
 # AGENTS.md
 
@@ -40,8 +41,9 @@ never drift.
 - **Complexity**: cyclomatic 10 and cognitive 15 per function (gocyclo,
   gocognit), Halstead difficulty 30 (`halstead_test.go`), 60 lines per
   function and 500 per file (`size_test.go`).
-- **Coverage**: 100.0% of statements (`scripts/coverage.sh`); never
-  lower it.
+- **Coverage**: 100.0% of statements (`scripts/coverage.sh`) and 100%
+  of branches (`scripts/branch-coverage.sh`, gobco); never lower
+  either.
 - **Data**: synthetic only. Test keys are fixed test vectors; no real
   key, credential or personal data anywhere.
 - **Headers**: every source file opens with the SPDX identifier

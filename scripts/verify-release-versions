@@ -1,5 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # Fails when a file that restates the module version disagrees with
 # version.go (the single source of truth), or when the server pin is not

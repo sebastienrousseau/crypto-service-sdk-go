@@ -362,9 +362,10 @@ make versions fmt-check vet build
 
 `make check` runs the version check, `gofmt -l`, `go vet`, staticcheck,
 the gocyclo (cyclomatic 10) and gocognit (cognitive 15) ceilings,
-govulncheck, `go build` and `go test -race`, which fails below 100.0%
+govulncheck, `go build`, `go test -race`, which fails below 100.0%
 statement coverage and holds every function to 60 lines, every file to
-500 and a Halstead difficulty of 30. `make conformance` runs the
+500 and a Halstead difficulty of 30, and gobco, which fails below 100%
+branch coverage. `make conformance` runs the
 conformance kit, the live tests, every example and every code block of
 this README against a running server; `make regression` starts the
 pinned server and runs both. `make fuzz` runs the two fuzz targets and

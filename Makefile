@@ -12,9 +12,9 @@ GOCYCLO     := github.com/fzipp/gocyclo/cmd/gocyclo@v0.6.0
 GOCOGNIT    := github.com/uudashr/gocognit/cmd/gocognit@v1.3.0
 GOVULNCHECK := golang.org/x/vuln/cmd/govulncheck@v1.9.0
 
-.PHONY: check versions fmt-check fmt vet staticcheck complexity vulncheck build test api-check conformance live examples readme bench regression docs docs-lint fuzz demo
+.PHONY: check versions fmt-check fmt vet staticcheck complexity vulncheck build test branch-coverage api-check conformance live examples readme bench regression docs docs-lint fuzz demo
 
-check: versions fmt-check vet staticcheck complexity vulncheck build test
+check: versions fmt-check vet staticcheck complexity vulncheck build test branch-coverage
 
 # Every file that restates the version agrees with version.go, and the
 # server pin is a full commit SHA (scripts/verify-release-versions).
@@ -62,6 +62,11 @@ build:
 # 100.0% of statements (scripts/coverage.sh). The live tests skip here.
 test:
 	scripts/coverage.sh
+
+# Branch coverage with gobco -branch (scripts/branch-coverage.sh): every
+# branch of the library and internal/kit taken both ways, or it fails.
+branch-coverage:
+	scripts/branch-coverage.sh
 
 # gorelease against the last release tag (scripts/api-check.sh).
 api-check:

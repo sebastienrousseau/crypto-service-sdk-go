@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 #
-# Lint, build and unit-test the client (100% statement coverage) on the
-# two Go releases the Go team supports, check the exported API against
+# Lint, build and unit-test the client (100% statement and branch
+# coverage) on the two Go releases the Go team supports, check the exported API against
 # the last tag, then run the full regression (conformance kit, live
 # typed tests, every example, every README block and a benchmark smoke)
 # against crypto-server built from the commit pinned in ci/server.ref.
@@ -72,15 +72,17 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           cache: false
-      # scripts/coverage.sh fails below 100.0% of statements.
-      - run: make build test
+      # scripts/coverage.sh fails below 100.0% of statements,
+      # scripts/branch-coverage.sh (gobco) below 100% of branches.
+      - run: make build test branch-coverage
 
   api:
     name: API-breakage check (gorelease)
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # gorelease compares the exported API with the last release tag; a
-    # no-op until the first tag exists (scripts/api-check.sh).
+    # gorelease compares the exported API with the last release tag
+    # before the version in version.go; it has nothing to compare while
+    # version.go still names the latest tag (scripts/api-check.sh).
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

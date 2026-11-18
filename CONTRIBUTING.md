@@ -17,9 +17,10 @@ make check
 
 That runs the version check, `gofmt -l`, `go vet`, staticcheck, the
 gocyclo and gocognit ceilings, govulncheck, `go build` and
-`go test -race` at 100% statement coverage. To add the conformance kit,
-the live tests, the examples and the README blocks, start a server from
-a built crypto-service checkout and point the tests at it:
+`go test -race` at 100% statement coverage, and gobco at 100% branch
+coverage. To add the conformance kit, the live tests, the examples and
+the README blocks, start a server from a built crypto-service checkout
+and point the tests at it:
 
 ```sh
 cd /path/to/crypto-service/packages/crypto-server

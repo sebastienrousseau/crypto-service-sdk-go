@@ -21,15 +21,25 @@ command matches each CI gate.
 | :--- | :--- | :--- |
 | `gofmt, vet, staticcheck, complexity` | `make versions fmt-check vet staticcheck complexity` | Version restatements, formatting, vet, staticcheck, cyclomatic 10, cognitive 15 |
 | `govulncheck` | `make vulncheck` | No reachable known vulnerability in the standard library in use |
-| `build and unit tests (Go 1.26, 1.27)` | `make build test` | Race-enabled tests at 100.0% statement coverage, 60 lines per function, 500 per file, Halstead difficulty 30 |
+| `build and unit tests (Go 1.26, 1.27)` | `make build test branch-coverage` | Race-enabled tests at 100.0% statement coverage and 100% branch coverage (gobco), 60 lines per function, 500 per file, Halstead difficulty 30 |
 | `fuzz` (`fuzz.yml`) | `make fuzz FUZZTIME=60s` | Problem-body parser and success decoder: no panic, no body in a message |
 | `API-breakage check (gorelease)` | `make api-check` | No incompatible exported change without a `Breaking:` CHANGELOG line |
 | `conformance` | `CRYPTO_SERVICE_SERVER_DIR=... make regression` | Every kit vector, the live tests, every example, every README block and a benchmark smoke run against the pinned server |
 | Docs lint | `make docs-lint` | markdownlint, codespell, REUSE |
 
-Go has no branch-coverage tool; the 100% floor is measured on
-statements, and every branch of the retry table, the error mapping and
-the decoders has its own test.
+Coverage is measured twice, on the module root and `internal/kit`.
+`go test -cover` measures statements (`scripts/coverage.sh`, floor
+100.0%). Branches are measured by
+[gobco](https://github.com/rillig/gobco) (BSD-2-Clause, run through
+`go run` at a pinned version) in its `-branch` mode, which instruments
+every `if`, `else`, `switch` case and loop condition and fails unless
+the unit tests take each one both ways (`scripts/branch-coverage.sh`,
+floor 100%: 160 of 160 branches in the root package and 120 of 120 in
+`internal/kit` when it was introduced). gobco does not instrument
+`select` statements; the one in the library (`sleep` in `retry.go`) is
+held by statement coverage and the retry tests. Without `-branch`,
+gobco reports the stricter per-condition coverage of `&&` and `||`
+operands; that report is informational.
 
 ## The live gates
 

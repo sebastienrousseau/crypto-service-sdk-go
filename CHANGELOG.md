@@ -8,6 +8,8 @@ format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and versions advance in `0.0.1` steps in lockstep with the Crypto
 Service suite.
 
+## [0.0.41] - Unreleased
+
 ## [0.0.40] - 2026-11-16
 
 The first release, in lockstep with the Crypto Service suite 0.0.40.

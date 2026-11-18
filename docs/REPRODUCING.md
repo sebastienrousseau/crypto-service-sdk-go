@@ -25,10 +25,11 @@ public, append-only log. Rebuild it from the git repository itself,
 bypassing the proxy and the checksum database, and compare:
 
 ```sh
+tag=v0.0.40  # the release to check
 mkdir -p /tmp/repro-mod && cd /tmp/repro-mod
 GOPROXY=direct GOSUMDB=off GOMODCACHE="$PWD/cache" GOFLAGS=-modcacherw \
-  go mod download -json github.com/sebastienrousseau/crypto-service-sdk-go@v0.0.40
-curl -s https://sum.golang.org/lookup/github.com/sebastienrousseau/crypto-service-sdk-go@v0.0.40
+  go mod download -json "github.com/sebastienrousseau/crypto-service-sdk-go@$tag"
+curl -s "https://sum.golang.org/lookup/github.com/sebastienrousseau/crypto-service-sdk-go@$tag"
 ```
 
 The `Sum` the first command prints must equal the `h1:` hash the

@@ -6,7 +6,8 @@ What may come next, in rough order. Nothing here is a commitment; each
 item lands only if it serves users of the suite and keeps the client
 thin. The first release, 0.0.40 (2026-11-16), shipped what this list
 opened with: the tag on proxy.golang.org and a GitHub release with
-provenance and an SBOM; [CHANGELOG.md](../CHANGELOG.md) records it.
+provenance and an SBOM, as the [changelog](project/changelog.md)
+records.
 
 1. **Published benchmark results**: generate `docs/BENCHMARKS.md` from
    `make bench` runs with their environment recorded, comparable

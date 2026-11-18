@@ -14,7 +14,7 @@ body:
     id: version
     attributes:
       label: crypto-service-sdk-go version
-      placeholder: "0.0.88"
+      placeholder: "0.0.41"
     validations:
       required: true
   - type: input
@@ -22,7 +22,7 @@ body:
     attributes:
       label: crypto-server version or commit
       description: The `version` field of GET /api/v1/health.
-      placeholder: "0.0.88"
+      placeholder: "0.0.41"
     validations:
       required: true
   - type: input

@@ -6,7 +6,7 @@ package cryptoservice
 // Version is this module's release, in lockstep with the Crypto Service
 // suite. scripts/verify-release-versions checks every file that
 // restates it.
-const Version = "0.0.40"
+const Version = "0.0.41"
 
 // userAgent identifies the client on every request, so a server's
 // access log can tell which SDK and release sent a call.

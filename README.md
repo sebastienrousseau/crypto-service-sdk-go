@@ -63,8 +63,11 @@
 ### As a Go library
 
 ```sh
-go get github.com/sebastienrousseau/crypto-service-sdk-go@v0.0.40
+go get github.com/sebastienrousseau/crypto-service-sdk-go@v0.0.41
 ```
+
+The module is on proxy.golang.org from v0.0.40; the snippet names the
+version `main` prepares, so until v0.0.41 is tagged use `@latest`.
 
 The module uses the Go standard library only: `go get` adds one line to
 your `go.mod` and nothing to your `go.sum` beyond this module. It needs a
@@ -298,7 +301,7 @@ environment, and CI smoke-runs every scenario once.
 - **Tracing.** `WithTraceparent` or `WithAutoTraceparent` sends a W3C
   `traceparent`.
 - **Identifies itself.** Every request carries
-  `User-Agent: crypto-service-sdk-go/0.0.40`.
+  `User-Agent: crypto-service-sdk-go/0.0.41`.
 
 ---
 

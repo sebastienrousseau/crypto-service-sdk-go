@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # `make check` runs every local gate CI runs without a server; `make
 # conformance` adds the live ones and needs a running crypto-server

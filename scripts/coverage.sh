@@ -1,5 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 #
 # Runs the library's tests with the race detector and fails unless they
 # cover 100.0% of statements. The measured packages are the module root

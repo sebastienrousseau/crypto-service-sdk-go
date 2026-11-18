@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command sign creates a server-held Ed25519 key, signs with it by
 // keyId, verifies the signature with the public key, and deletes the

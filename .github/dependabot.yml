@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
+# SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 # Go modules (the module itself has no requirements; the entry keeps
 # Dependabot watching should one appear), the CI actions, the hash-pinned
 # Python tool locks in ci/, and the devcontainer image. The crypto-server

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
+// SPDX-FileCopyrightText: 2026 Sebastien Rousseau
 
 // Command errors shows the three kinds of failure: an RFC 9457 problem
 // for an unknown key, a validation problem with per-field errors, and a

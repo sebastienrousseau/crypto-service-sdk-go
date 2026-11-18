@@ -104,6 +104,12 @@ environment.
    gates the last two jobs; no registry secret is involved.
 
 Run the workflow by hand (`workflow_dispatch`, `dry_run` on) to see the
-release it would make without publishing anything. The tag-verification
+release it would make without publishing anything.
+
+The archive and SBOM are reproducible: `scripts/release-artifacts.sh`
+gives byte-identical files for the same commit on any machine, and
+[docs/REPRODUCING.md](https://github.com/sebastienrousseau/crypto-service-sdk-go/blob/main/docs/REPRODUCING.md) gives the procedure and the
+expected hashes. Keep it so: no time stamps, no random identifiers,
+and every tool at a pinned version. The tag-verification
 step checks the tag against the maintainer's allowed signers in
 `KEYS.asc`.

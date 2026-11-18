@@ -76,5 +76,6 @@ nav:
       - Roadmap: ROADMAP.md
       - Changelog: project/changelog.md
       - Security: project/security.md
+      - Reproducing a release: REPRODUCING.md
       - Support: project/support.md
       - Governance: project/governance.md
